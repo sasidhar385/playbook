@@ -1,0 +1,14 @@
+---
+- hosts: amp
+  become: yes
+  remote_user: vara
+  become_user: root
+  tasks:
+   - name: copy the patch script
+     copy: src="/scripts/ansible/sasi/ospatch_13042022.sh" dest="/tmp/"
+   - name: set permission
+     file: path=/tmp/script1.sh owner=root group=root mode=0755
+   - name: Execute the script
+     shell: /bin/bash /tmp/script1.sh
+   - name: reboot the host
+     command: /sbin/reboot

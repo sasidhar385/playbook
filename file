@@ -1,0 +1,8 @@
+---
+- hosts: amp
+  become: yes
+  remote_user: vara
+  become_user: root
+  tasks:
+   - name: create a file
+     file: name=/tmp/file state=touch mode=0655 owner=vara group=1200
