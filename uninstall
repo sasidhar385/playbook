@@ -1,0 +1,8 @@
+---
+- hosts: amp
+  become: yes
+  remote_user: vara
+  become_user: root
+  tasks:
+   - name: un-install httpd
+     package: name=httpd state=absent
